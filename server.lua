@@ -184,7 +184,7 @@ RegisterNetEvent('qb-vineyard:server:SellWine', function()
             if wine.amount >= 1 then
 	            xPlayer.Functions.RemoveItem("wine", 1, false)
 	            TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
-                TriggerClientEvent('okokNotify:Alert', source, "Juice Picker", "You\'ve sold a Bottle of Wine", 3500, 'info')
+                TriggerClientEvent('QBCore:Notify', source, "You\'ve sold a Bottle of Wine", 'success')
                 xPlayer.Functions.AddMoney('cash', 8)
             else
                 TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
@@ -205,7 +205,7 @@ RegisterNetEvent('qb-vineyard:server:SellWineTen', function()
             if wine.amount >= 10 then
 	            xPlayer.Functions.RemoveItem("wine", 10, false)
 	            TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
-                TriggerClientEvent('okokNotify:Alert', source, "Juice Picker", "You\'ve sold a Bottle of Wine", 3500, 'info')
+                TriggerClientEvent('QBCore:Notify', source, "You\'ve sold a Bottle of Wine", 'success')
                 xPlayer.Functions.AddMoney('cash', 100)
             else
                 TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
@@ -226,7 +226,7 @@ RegisterNetEvent('qb-vineyard:server:SellGrapeJuice', function()
             if grapejuice.amount >= 3 then
                 xPlayer.Functions.RemoveItem("grapejuice", 3, false)
                 TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
-                TriggerClientEvent('okokNotify:Alert', source, "Juice Picker", "You\'ve sold a Bottle of GrapeJuice", 3500, 'info')
+                TriggerClientEvent('QBCore:Notify', source, "You\'ve sold a Bottle of GrapeJuice", 'success')
                 xPlayer.Functions.AddMoney('cash', 2)
             else
                 TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
@@ -247,7 +247,7 @@ RegisterNetEvent('qb-vineyard:server:SellGrapeJuiceTen', function()
             if grapejuice.amount >= 30 then
                 xPlayer.Functions.RemoveItem("grapejuice", 10, false)
                 TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
-                TriggerClientEvent('okokNotify:Alert', source, "Juice Picker", "You\'ve sold a Bottle of GrapeJuice", 3500, 'info')
+                TriggerClientEvent('QBCore:Notify', source, "You\'ve sold a Bottle of GrapeJuice", 'success')
                 xPlayer.Functions.AddMoney('cash', 25)
             else
                 TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
