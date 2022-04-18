@@ -11,7 +11,8 @@ https://discord.gg/constantroleplay
 
 Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. With this in mind, you can further use the packed Wine/GrapeJuice for immersive RolePlay between a Mafia/Cartel and Business. Furthermore, it allows there to be an immersive set of RolePlay coming from those who wish to Own the VineYard Mansion.
 
-Required Items:
+Important Fact:
+ - This Resource is using QB-Target and NOT Visible DrawText.
 
 -- Place into shared/items.lua
 ```
