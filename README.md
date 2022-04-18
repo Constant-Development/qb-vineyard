@@ -27,6 +27,17 @@ Important Fact:
 ['grapejuice24'] 				 = {['name'] = 'grapejuice24', 					['label'] = 'Grape Juice 24PK', 		['weight'] = 7200, 		['type'] = 'item', 		['image'] = 'pallet-of-boxes.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Crate of 24 bottles of grape juice',["created"] = nil,["decay"] = 28.0},
 ```
 
+-- Place into ms-peds/config.lua
+```
+	-- Juice Picker Sales
+	
+	{
+		model = `cs_russiandrunk`,
+		coords = vector4(-1888.0942, 2050.4277, 140.9838, 156.2016),
+		gender = 'male',
+	},
+ ```
+
 Note: If you aren't using T&J's Inventory System than you must remove ["created"]
 Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
 
