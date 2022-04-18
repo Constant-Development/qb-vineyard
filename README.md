@@ -41,6 +41,8 @@ Important Fact:
 Note: If you aren't using T&J's Inventory System than you must remove ["created"]
 Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
 
+Note: If you are wishing to know, the Targets are BoxZones rather than TargetModels. #BetterForImmersion
+
 Final Note:
 
 If you are to run into any issues regarding this Resource you may open a Ticket within Constant Development or ask for appropiate Support within the Discord!
