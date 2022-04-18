@@ -75,7 +75,7 @@ RegisterNetEvent('qb-vineyard:pickgrapes')
 AddEventHandler('qb-vineyard:pickgrapes', function()
     pickProcess()
 	Wait(5000)
-	exports['okokNotify']:Alert("VineYard Picking", "Begin heading to the back two Doors of the Mansion...", 3500, 'info')
+	QBCore.Functions.Notify('Begin heading to the back two Doors of the Mansion...', 'primary', 4000)
 end)
 
 RegisterNetEvent('qb-vineyard:GrapeJuiceProcess')
