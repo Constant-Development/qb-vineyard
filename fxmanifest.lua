@@ -1,6 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
+author 'SixGrams#0544 | Constant Development'
 description 'QB-Vineyard'
 version '1.0.0'
 
