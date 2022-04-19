@@ -14,6 +14,10 @@ Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJ
 Important Fact:
  - This Resource is using QB-Target and NOT Visible DrawText.
 
+Dependencies:
+https://github.com/Renewed-Scripts/qb-target
+https://github.com/MiddleSkillz/ms-peds
+
 -- Place into shared/items.lua
 ```
 ['grape'] 					 	 = {['name'] = 'grape', 						['label'] = 'Grape', 					['weight'] = 100, 		['type'] = 'item', 		['image'] = 'grape.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Mmmmh yummie, grapes',["created"] = nil,["decay"] = 28.0},
