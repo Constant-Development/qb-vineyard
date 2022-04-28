@@ -29,7 +29,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
             header = "Pack GrapeJuice",
             txt = "x6 GrapeJuice = 6Pack | x12 GrapeJuice = 12Pack | x24 GrapeJuice = 24Pack",
             params = {
-                event = "qb-vineyard:server:Packaging",
+                event = "qb-vineyard:client:PackagingStage",
             }
         },
         {
@@ -37,7 +37,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
             header = "Pack Wine",
             txt = "x6 Wine = 6Pack | x12 = 12Pack | x24 Wine = 24Pack",
             params = {
-                event = "qb-vineyard:server:Packaging",
+                event = "qb-vineyard:client:PackagingStage",
             }
         },
     }
@@ -56,7 +56,7 @@ AddEventHandler('qb-vineyard:client:SellMenu', function()
             header = "Sell GrapeJuice",
             txt = "x6 Grape Juice = $4.00 | x12 Grape Juice = $15.00 | x24 Grape Juice = $32.00",
             params = {
-                event = "qb-vineyard:server:SellMenu",
+                event = "qb-vineyard:client:SellMenu",
             }
         },
         {
@@ -64,7 +64,7 @@ AddEventHandler('qb-vineyard:client:SellMenu', function()
             header = "Sell Wine",
             txt = "x6 Wine = $35.00 | x12 Wine = $80.00 | x24 Wine = $180.00",
             params = {
-                event = "qb-vineyard:server:SellMenu",
+                event = "qb-vineyard:client:SellMenu",
             }
         },
     }
