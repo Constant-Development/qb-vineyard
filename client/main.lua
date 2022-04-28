@@ -177,7 +177,7 @@ AddEventHandler('qb-vineyard:client:SellMenuEvent', function()
         RouteNineBlip = false
         RouteTenBlip = false
     end, function() -- Cancel
+	StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
-        StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
     end)
 end)
