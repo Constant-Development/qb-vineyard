@@ -50,130 +50,48 @@ RegisterNetEvent('qb-vineyard:server:grapeJuice', function()
 	end
 end)
 
-RegisterNetEvent('qb-vineyard:server:grapeJuice6pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("grapejuice", 6, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
-                xPlayer.Functions.AddItem("grapejuice6", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice6'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
+RegisterNetEvent('qb-vineyard:server:GrapeJuicePackaging', function()
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player.Functions.GetItemByName('grapejuice') >= 6 then
+        Player.Functions.RemoveItem("grapejuice", 6)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
+        Player.Functions.AddItem("grapejuice6", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice6'], "add")
+    elseif Player.Functions.GetItemByName('grapejuice') >= 12 then
+        Player.Functions.RemoveItem("grapejuice", 12)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
+        Player.Functions.AddItem("grapejuice12", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice12'], "add")
+    elseif Player.Functions.GetItemByName('grapejuice') >= 24 then
+        Player.Functions.RemoveItem("grapejuice", 24)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
+        Player.Functions.AddItem("grapejuice24", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice24'], "add")
+    else
+        TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
+    end
 end)
 
-RegisterNetEvent('qb-vineyard:server:grapeJuice12pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("grapejuice", 12, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
-                xPlayer.Functions.AddItem("grapejuice12", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice12'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
-end)
-
-RegisterNetEvent('qb-vineyard:server:grapeJuice24pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("grapejuice", 24, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice'], "remove")
-                xPlayer.Functions.AddItem("grapejuice24", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapejuice24'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
-end)
-
-RegisterNetEvent('qb-vineyard:server:wine6pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("wine", 6, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
-                xPlayer.Functions.AddItem("wine6", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine6'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
-end)
-
-RegisterNetEvent('qb-vineyard:server:wine12pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("wine", 12, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
-                xPlayer.Functions.AddItem("wine12", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine12'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
-end)
-
-RegisterNetEvent('qb-vineyard:server:wine24pk', function()
-	local xPlayer = QBCore.Functions.GetPlayer(tonumber(source))
-    local grape = xPlayer.Functions.GetItemByName('grape')
-	if xPlayer.PlayerData.items ~= nil then
-        if grape.amount >=16 ~= nil then
-            if grape.amount >= 16 then
-                xPlayer.Functions.RemoveItem("wine", 24, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
-                xPlayer.Functions.AddItem("wine24", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine24'], "add")
-            else
-                TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
-        end
-	else
-		TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", "error")
-	end
+RegisterNetEvent('qb-vineyard:server:WinePackaging', function()
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player.Functions.GetItemByName('wine') >= 6 then
+        Player.Functions.RemoveItem("wine", 6)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
+        Player.Functions.AddItem("wine6", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine6'], "add")
+    elseif Player.Functions.GetItemByName('wine') >= 12 then
+        Player.Functions.RemoveItem("wine", 12)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
+        Player.Functions.AddItem("wine12", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine12'], "add")
+    elseif Player.Functions.GetItemByName('wine') >= 24 then
+        Player.Functions.RemoveItem("wine", 24)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine'], "remove")
+        Player.Functions.AddItem("wine24", 1)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['wine24'], "add")
+    else
+        TriggerClientEvent('QBCore:Notify', source, "You don\'t have the correct Items!", 'error')
+    end
 end)
 
 RegisterNetEvent('qb-vineyard:server:SellWine', function()
