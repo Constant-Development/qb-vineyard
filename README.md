@@ -13,7 +13,7 @@ Dependencies:
 - [qb-target](https://github.com/Renewed-Scripts/qb-target)
 - [ms-peds](https://github.com/MiddleSkillz/ms-peds)
 
--- Place into shared/items.lua
+-- Place into qb-core/shared/items.lua
 ```
 ['grape'] 					 	 = {['name'] = 'grape', 						['label'] = 'Grape', 					['weight'] = 100, 		['type'] = 'item', 		['image'] = 'grape.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Mmmmh yummie, grapes',["created"] = nil,["decay"] = 28.0},
 ['wine'] 					 	 = {['name'] = 'wine', 							['label'] = 'Wine', 					['weight'] = 300, 		['type'] = 'item', 		['image'] = 'wine.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Some good wine to drink on a fine evening',["created"] = nil,["decay"] = 28.0},
