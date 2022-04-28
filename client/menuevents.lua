@@ -37,7 +37,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack GrapeJuice",
                     txt = "x6 Grape Juice = 6Pack",
                     params = {
-                        event = "qb-vineyard:server:grapeJuice6pk",
+                        event = "qb-vineyard:server:GrapeJuicePackaging",
                     }
                 },
                 {
@@ -45,7 +45,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack GrapeJuice",
                     txt = "x12 Grape Juice = 12Pack",
                     params = {
-                        event = "qb-vineyard:server:grapeJuice12pk",
+                        event = "qb-vineyard:server:GrapeJuicePackaging",
                     }
                 },
                 {
@@ -53,7 +53,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack GrapeJuice",
                     txt = "x24 Grape Juice = 24Pack",
                     params = {
-                        event = "qb-vineyard:server:grapeJuice24pk",
+                        event = "qb-vineyard:server:GrapeJuicePackaging",
                     }
                 },
 				{
@@ -61,7 +61,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack Wine",
                     txt = "x6 Wine = 6Pack",
                     params = {
-                        event = "qb-vineyard:server:wine6pk",
+                        event = "qb-vineyard:server:WinePackaging",
                     }
                 },
                 {
@@ -69,7 +69,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack Wine",
                     txt = "x12 Wine = 12Pack",
                     params = {
-                        event = "qb-vineyard:server:wine12pk",
+                        event = "qb-vineyard:server:WinePackaging",
                     }
                 },
                 {
@@ -77,7 +77,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
                     header = "Pack Wine",
                     txt = "x24 Wine = 24Pack",
                     params = {
-                        event = "qb-vineyard:server:wine24pk",
+                        event = "qb-vineyard:server:WinePackaging",
                     }
                 },
             }
