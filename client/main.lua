@@ -61,7 +61,7 @@ function grapeJuiceProcess()
         flags = 6,
     }, {}, {}, {}, function() -- Done
         StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
-        TriggerServerEvent("qb-vineyard:server:grapeJuice")
+        TriggerServerEvent("qb-vineyard:server:PortionGrapeJuice")
     end, function() -- Cancel
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
         StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
@@ -80,7 +80,7 @@ function WineProcess()
         flags = 6,
     }, {}, {}, {}, function() -- Done
         StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
-        TriggerServerEvent("qb-vineyard:server:loadIngredients")
+        TriggerServerEvent("qb-vineyard:server:PortionWine")
     end, function() -- Cancel
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
         StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
