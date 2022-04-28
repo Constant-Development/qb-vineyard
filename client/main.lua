@@ -95,7 +95,7 @@ AddEventHandler('qb-vineyard:pickgrapes', function()
 end)
 
 RegisterNetEvent('qb-vineyard:client:ProcessStage')
-AddEventHandler('qb-vineyard:ProcessStage', function()
+AddEventHandler('qb-vineyard:client:ProcessStage', function()
     QBCore.Functions.TriggerCallback("QBCore:HasItem", function(HasItem) 
         if HasItem then
             grapeJuiceProcess()
@@ -105,18 +105,79 @@ AddEventHandler('qb-vineyard:ProcessStage', function()
     end, Config.ProcessingItem)
 end)
 
-RegisterNetEvent('qb-vineyard:client:SellMenu')
-AddEventHandler('qb-vineyard:SellGrapeJuiceMenu', function()
+RegisterNetEvent('qb-vineyard:client:PackagingStage')
+AddEventHandler('qb-vineyard:client:PackagingStage', function()
     QBCore.Functions.TriggerCallback("QBCore:HasItem", function(HasItem) 
         if HasItem then
-            TriggerServerEvent("qb-vineyard:server:SellGrapeJuice")
+            TriggerServerEvent('qb-vineyard:server:Packaging')
         else
-            TriggerServerEvent("qb-vineyard:server:SellWine")
+            TriggerServerEvent('qb-vineyard:server:Packaging')
         end
-    end, Config.SellItem)
+    end, Config.ProcessingItem)
 end)
 
-RegisterNetEvent('qb-vineyard:client:loadIngredients') -- Loads Portion of GrapeJuice into MoonShine
-AddEventHandler('qb-vineyard:client:loadIngredients', function()
+RegisterNetEvent('qb-vineyard:client:SellMenu')
+AddEventHandler('qb-vineyard:client:SellMenu', function()
+    local luck = math.random(1,100)
+    if luck >= 10 then
+        SetNewWayPoint(Config.RouteCoords.RouteOne)
+        RouteOneBlip = true
+    elseif luck >= 20 then
+        SetNewWayPoint(Config.RouteCoords.RouteTwo)
+        RouteTwoBlip = true
+    elseif luck >= 30 then
+        SetNewWayPoint(Config.RouteCoords.RouteThree)
+        RouteThreeBlip = true
+    elseif luck >= 40 then
+        SetNewWayPoint(Config.RouteCoords.RouteFour)
+        RouteFourBlip = true
+    elseif luck >= 50 then
+        SetNewWayPoint(Config.RouteCoords.RouteFive)
+        RouteFiveBlip = true
+    elseif luck >= 60 then
+        SetNewWayPoint(Config.RouteCoords.RouteSix)
+        RouteSixBlip = true
+    elseif luck >= 70 then
+        SetNewWayPoint(Config.RouteCoords.RouteSeven)
+        RouteSevenBlip = true
+    elseif luck >= 80 then
+        SetNewWayPoint(Config.RouteCoords.RouteEight)
+        RouteEightBlip = true
+    elseif luck >= 90 then
+        SetNewWayPoint(Config.RouteCoords.RouteNine)
+        RouteNineBlip = true
+    elseif luck >= 100 then
+        SetNewWayPoint(Config.RouteCoords.RouteTen)
+        RouteTenBlip = true
+    end
+end)
 
+RegisterNetEvent('qb-vineyard:client:SellMenuEvent')
+AddEventHandler('qb-vineyard:client:SellMenuEvent', function()
+    QBCore.Functions.Progressbar("deliver_goods", "Delivering Goods...", math.random(8500,12000), false, true, {
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = "timetable@jimmy@doorknock@",
+        anim = "knockdoor_idle_cam",
+        flags = 6,
+    }, {}, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
+        TriggerServerEvent("qb-vineyard:server:SellMenu")
+        RouteOneBlip = false
+        RouteTwoBlip = false
+        RouteThreeBlip = false
+        RouteFourBlip = false
+        RouteFiveBlip = false
+        RouteSixBlip = false
+        RouteSevenBlip = false
+        RouteEightBlip = false
+        RouteNineBlip = false
+        RouteTenBlip = false
+    end, function() -- Cancel
+        Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
+        StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
+    end)
 end)
