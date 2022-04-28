@@ -50,7 +50,7 @@ function pickProcess()
 end
 
 function grapeJuiceProcess()
-    QBCore.Functions.Progressbar("grape_juice", "Processing Grapes ..", math.random(15000,20000), false, true, {
+    QBCore.Functions.Progressbar("process_grapes", "Processing Grapes ..", math.random(15000,20000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -69,7 +69,7 @@ function grapeJuiceProcess()
 end
 
 function WineProcess()
-    QBCore.Functions.Progressbar("grape_juice", "Stirring Wine..", math.random(15000,20000), false, true, {
+    QBCore.Functions.Progressbar("stirr_wine", "Stirring Wine..", math.random(15000,20000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
