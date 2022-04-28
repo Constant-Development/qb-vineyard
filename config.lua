@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Blips = true
+Config.Blip = true
  -- True = Blips Enabled
  -- False = Blips Disabled
 
@@ -11,4 +11,16 @@ Config.Blip = {
     BlipScale = 0.6,
     BlipColour = 58,
     BlipName = "Vineyard",
+}
+
+Config.ProcessingItem = "grape" -- Don't touch this unless you edit 'qb-vineyard:client:ProcessStage'
+Config.SellItem = "grapejuice" -- Don't touch this unless you edit 'qb-vineyard:client:SellMenu'
+
+Config.Notifications = {
+    --Messages
+    ["TaskCancel"] = "You have cancelled the task...",
+    ["PickGrapesNextStepMessage"] = "Begin heading to the back two Doors of the Mansion...",
+
+    --OkOk Titles
+    ["okok_VineyardTitle"] = "Juice System Aid",
 }
