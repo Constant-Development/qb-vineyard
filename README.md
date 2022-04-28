@@ -1,22 +1,17 @@
 # qb-vineyard
-QBCore Vineyard Job "Entire"Rework
+QBCore Vineyard Job Rework
 
 Developed By: SixGrams#0544
 
-Constant Development Discord:
-https://discord.gg/gSQbshCNv4
+Constant Development Discord: https://discord.gg/gSQbshCNv4
 
-Constant RolePlay Discord:
-https://discord.gg/constantroleplay
+Constant RolePlay Discord: https://discord.gg/constantroleplay
 
 Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. With this in mind, you can further use the packed Wine/GrapeJuice for immersive RolePlay between a Mafia/Cartel and Business. Furthermore, it allows there to be an immersive set of RolePlay coming from those who wish to Own the VineYard Mansion.
 
-Important Fact:
- - This Resource is using QB-Target and NOT Visible DrawText.
-
 Dependencies:
-https://github.com/Renewed-Scripts/qb-target
-https://github.com/MiddleSkillz/ms-peds
+- [qb-target](https://github.com/Renewed-Scripts/qb-target)
+- [ms-peds](https://github.com/MiddleSkillz/ms-peds)
 
 -- Place into shared/items.lua
 ```
@@ -31,6 +26,9 @@ https://github.com/MiddleSkillz/ms-peds
 ['grapejuice24'] 				 = {['name'] = 'grapejuice24', 					['label'] = 'Grape Juice 24PK', 		['weight'] = 7200, 		['type'] = 'item', 		['image'] = 'pallet-of-boxes.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Crate of 24 bottles of grape juice',["created"] = nil,["decay"] = 28.0},
 ```
 
+Note: If you aren't using T&J's Inventory System than you must remove ["created"]
+Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
+
 -- Place into ms-peds/config.lua
 ```
 	-- Juice Picker Sales
@@ -40,13 +38,9 @@ https://github.com/MiddleSkillz/ms-peds
 		coords = vector4(-1888.0942, 2050.4277, 140.9838, 156.2016),
 		gender = 'male',
 	},
- ```
-
-Note: If you aren't using T&J's Inventory System than you must remove ["created"]
-Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
-
-Note: If you are wishing to know, the Targets are BoxZones rather than TargetModels. #BetterForImmersion
+```
 
 Final Note:
 
 If you are to run into any issues regarding this Resource you may open a Ticket within Constant Development or ask for appropiate Support within the Discord!
+
