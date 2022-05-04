@@ -1,5 +1,86 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+local Blip
+
+Citizen.CreateThread(function()
+    exports['qb-target']:AddBoxZone("GrapePicking", vector3(-1885.91, 2120.11, 135.97), 35.4, 52.8, {
+	name = "GrapePicking",
+	heading = 352,
+	debugPoly = false,
+	}, {
+		options = {
+			{
+                type = "client",
+                event = "qb-vineyard:pickgrapes",
+                icon = "fas fa-hand",
+                label = "Start Picking Grapes!",
+			},
+		},
+		distance = 1
+    })
+    exports['qb-target']:AddBoxZone("JuicePickerProcess", vector3(-1874.69, 2069.18, 141.0), 2.0, 2.0, {
+	name = "JuicePickerProcess",
+	heading = 340,
+	debugPoly = false,
+	}, {
+		options = {
+			{
+            	type = "client",
+            	event = "qb-vineyard:client:ProcessMenu",
+				icon = "fas fa-wine-bottle",
+				label = "Squeeze Some Juices?!",
+			},
+		},
+		distance = 2
+    })
+    exports['qb-target']:AddBoxZone("JuicePickerPackaging", vector3(-1886.19, 2073.48, 141.0), 2.0, 2.0, {
+	name = "JuicePickerPackaging",
+	heading = 340,
+	debugPoly = false,
+	}, {
+		options = {
+			{
+            	type = "client",
+            	event = "qb-vineyard:client:PackingMenu",
+				icon = "fa fa-box",
+				label = "Pack Some Drinks?!",
+			},
+		},
+		distance = 2
+    })
+    exports['qb-target']:AddBoxZone("JuicePickerSell", vector3(-1888.09, 2050.43, 140.98), 0.8, 0.8, {
+	name = "JuicePickerSell",
+	heading = 0,
+	debugPoly = false,
+	minZ = 139.98,
+	maxZ = 141.78,
+	}, {
+		options = {
+			{
+            	type = "client",
+            	event = "qb-vineyard:client:SellMenu",
+				icon = "fa fa-dollar-sign",
+				label = "Sell Juices",
+			},
+		},
+		distance = 3
+    })
+end)
+
+Citizen.CreateThread(function()
+    if Config.Blip then
+	    VineyardBlip = AddBlipForCoord(-1874.8431, 2086.2163, 141.8856)
+        SetBlipSprite(VineyardBlip, Config.EnabledBlip.BlipSprite)
+	    SetBlipDisplay(VineyardBlip, Config.EnabledBlip.BlipDisplay)
+        SetBlipScale(VineyardBlip, Config.EnabledBlip.BlipScale)
+	    SetBlipColour(VineyardBlip, Config.EnabledBlip.BlipColour)
+        SetBlipAsShortRange(VineyardBlip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(Config.EnabledBlip.BlipName)
+        EndTextCommandSetBlipName(VineyardBlip)
+    end
+end)
+
 local function Notify(notifType, message, title)
 	if Config.Notify == 'qb' then
 		if notifType == 1 then
@@ -40,12 +121,12 @@ function pickProcess()
         animDict = "amb@prop_human_bum_bin@idle_a",
         anim = "idle_a",
         flags = 6,
-    }, {}, {}, {}, function() -- Done
-        StopAnimTask(PlayerPedId(), "amb@prop_human_bum_bin@idle_a", "idle_a", 6.0)
+    }, {}, {}, function() -- Done
+        ClearPedTasks(PlayerPedId())
 		TriggerServerEvent("qb-vineyard:server:getGrapes")
     end, function() -- Cancel
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
-        StopAnimTask(PlayerPedId(), "amb@prop_human_bum_bin@idle_a", "idle_a", 6.0)
+        ClearPedTasks(PlayerPedId())
     end)
 end
 
@@ -59,12 +140,12 @@ function grapeJuiceProcess()
         animDict = "amb@code_human_wander_rain@male_a@base",
         anim = "static",
         flags = 6,
-    }, {}, {}, {}, function() -- Done
-        StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
-        TriggerServerEvent("qb-vineyard:server:PortionJuices")
+    }, {}, {}, function() -- Done
+        ClearPedTasks(PlayerPedId())
+        TriggerServerEvent("qb-vineyard:server:PortionGrapes")
     end, function() -- Cancel
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
-        StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
+        ClearPedTasks(PlayerPedId())
     end)
 end
 
@@ -78,12 +159,12 @@ function WineProcess()
         animDict = "amb@code_human_wander_rain@male_a@base",
         anim = "static",
         flags = 6,
-    }, {}, {}, {}, function() -- Done
-        StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
-        TriggerServerEvent("qb-vineyard:server:PortionJuices")
+    }, {}, {}, function() -- Done
+        ClearPedTasks(PlayerPedId())
+        TriggerServerEvent("qb-vineyard:server:PortionGrapeJuice")
     end, function() -- Cancel
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
-        StopAnimTask(PlayerPedId(), "amb@code_human_wander_rain@male_a@base", "static", 6.0)
+        ClearPedTasks(PlayerPedId())
     end)
 end
 
@@ -94,90 +175,72 @@ AddEventHandler('qb-vineyard:pickgrapes', function()
     Notify(2, Config.Notifications["PickGrapesNextStepMessage"], Config.Notifications["okok_VineyardTitle"])
 end)
 
-RegisterNetEvent('qb-vineyard:client:ProcessStage')
-AddEventHandler('qb-vineyard:client:ProcessStage', function()
-    QBCore.Functions.TriggerCallback("QBCore:HasItem", function(HasItem) 
-        if HasItem then
-            grapeJuiceProcess()
-        else
-            WineProcess()
-        end
-    end, Config.ProcessingItem)
+RegisterNetEvent('qb-vineyard:client:GrapeJuiceProcessing')
+AddEventHandler('qb-vineyard:client:GrapeJuiceProcessing', function()
+    grapeJuiceProcess()
 end)
 
-RegisterNetEvent('qb-vineyard:client:PackagingStage')
-AddEventHandler('qb-vineyard:client:PackagingStage', function()
-    QBCore.Functions.TriggerCallback("QBCore:HasItem", function(HasItem) 
-        if HasItem then
-            TriggerServerEvent('qb-vineyard:server:Packaging')
-        else
-            TriggerServerEvent('qb-vineyard:server:Packaging')
-        end
-    end, Config.ProcessingItem)
+RegisterNetEvent('qb-vineyard:client:WineProcessing')
+AddEventHandler('qb-vineyard:client:WineProcessing', function()
+    WineProcess()
 end)
 
-RegisterNetEvent('qb-vineyard:client:SellMenu')
-AddEventHandler('qb-vineyard:client:SellMenu', function()
-    local luck = math.random(1,100)
-    if luck >= 10 then
-        SetNewWayPoint(Config.RouteCoords.RouteOne)
-        RouteOneBlip = true
-    elseif luck >= 20 then
-        SetNewWayPoint(Config.RouteCoords.RouteTwo)
-        RouteTwoBlip = true
-    elseif luck >= 30 then
-        SetNewWayPoint(Config.RouteCoords.RouteThree)
-        RouteThreeBlip = true
-    elseif luck >= 40 then
-        SetNewWayPoint(Config.RouteCoords.RouteFour)
-        RouteFourBlip = true
-    elseif luck >= 50 then
-        SetNewWayPoint(Config.RouteCoords.RouteFive)
-        RouteFiveBlip = true
-    elseif luck >= 60 then
-        SetNewWayPoint(Config.RouteCoords.RouteSix)
-        RouteSixBlip = true
-    elseif luck >= 70 then
-        SetNewWayPoint(Config.RouteCoords.RouteSeven)
-        RouteSevenBlip = true
-    elseif luck >= 80 then
-        SetNewWayPoint(Config.RouteCoords.RouteEight)
-        RouteEightBlip = true
-    elseif luck >= 90 then
-        SetNewWayPoint(Config.RouteCoords.RouteNine)
-        RouteNineBlip = true
-    elseif luck >= 100 then
-        SetNewWayPoint(Config.RouteCoords.RouteTen)
-        RouteTenBlip = true
-    end
+RegisterNetEvent('qb-vineyard:client:GrapeJuicePackaging')
+AddEventHandler('qb-vineyard:client:GrapeJuicePackaging', function()
+    TriggerServerEvent('qb-vineyard:server:GrapeJuicePackaging')
+end)
+
+RegisterNetEvent('qb-vineyard:client:WinePackaging')
+AddEventHandler('qb-vineyard:client:WinePackaging', function()
+    TriggerServerEvent('qb-vineyard:server:WinePackaging')
+end)
+
+local function DeliveryTargetZone(route)
+    Citizen.CreateThread(function()
+        exports['qb-target']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
+        name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, }, 
+        { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
+    end)
+end
+
+local function DeliveryBlip(route)
+	Blip = AddBlipForCoord(Config.Routes[route].DeliveryCoords)
+    SetBlipSprite(Blip, Config.RoutesBlipConfig.BlipSprite)
+	SetBlipDisplay(Blip, Config.RoutesBlipConfig.BlipDisplay)
+    SetBlipScale(Blip, Config.RoutesBlipConfig.BlipScale)
+	SetBlipColour(Blip, Config.RoutesBlipConfig.BlipColour)
+    SetBlipAsShortRange(Blip, true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(Config.RoutesBlipConfig.BlipName)
+    EndTextCommandSetBlipName(Blip)
+end
+
+RegisterNetEvent('qb-vineyard:client:SellMenuFactors')
+AddEventHandler('qb-vineyard:client:SellMenuFactors', function()
+    local luck = math.random(#Config.Routes)
+    SetNewWaypoint(Config.Routes[luck].DeliveryCoords)
+    DeliveryTargetZone(luck)
+    DeliveryBlip(luck)
 end)
 
 RegisterNetEvent('qb-vineyard:client:SellMenuEvent')
 AddEventHandler('qb-vineyard:client:SellMenuEvent', function()
-    QBCore.Functions.Progressbar("deliver_goods", "Delivering Goods...", math.random(8500,12000), false, true, {
+    QBCore.Functions.Progressbar("deliver_goods", "Delivering Goods...", math.random(8500,12000), true, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
     }, {
         animDict = "timetable@jimmy@doorknock@",
-        anim = "knockdoor_idle_cam",
-        flags = 6,
-    }, {}, {}, {}, function() -- Done
-        StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
+        anim = "knockdoor_idle",
+        flags = 17,
+    }, {}, {}, function() -- Done
+        ClearPedTasks(PlayerPedId())
         TriggerServerEvent("qb-vineyard:server:SellMenu")
-        RouteOneBlip = false
-        RouteTwoBlip = false
-        RouteThreeBlip = false
-        RouteFourBlip = false
-        RouteFiveBlip = false
-        RouteSixBlip = false
-        RouteSevenBlip = false
-        RouteEightBlip = false
-        RouteNineBlip = false
-        RouteTenBlip = false
+        RemoveBlip(Blip)
+        exports['qb-target']:RemoveZone("VineyardSellMenu")
     end, function() -- Cancel
-	StopAnimTask(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle_cam", 6.0)
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
+        ClearPedTasks(PlayerPedId())
     end)
 end)

@@ -1,19 +1,21 @@
 # qb-vineyard
 QBCore Vineyard Job Rework
 
-Developed By: SixGrams#0544
-
 Constant Development Discord: https://discord.gg/gSQbshCNv4
 
 Constant RolePlay Discord: https://discord.gg/constantroleplay
 
-Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. With this in mind, you can further use the packed Wine/GrapeJuice for immersive RolePlay between a Mafia/Cartel and Business. Furthermore, it allows there to be an immersive set of RolePlay coming from those who wish to Own the VineYard Mansion.
+Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. 
+With this in mind, you can further use the packed Wine/GrapeJuice for immersive RolePlay between 
+a Mafia/Cartel and Business. Furthermore, it allows there to be an immersive set of RolePlay coming 
+from those who wish to Own the VineYard Mansion. Another note, this also allows for those who manage
+the Resource to intricate different Locations and Systems relating to their custom Communities/Server's.
 
-Dependencies:
+## Dependencies:
 - [qb-target](https://github.com/Renewed-Scripts/qb-target)
 - [ms-peds](https://github.com/MiddleSkillz/ms-peds)
 
--- Place into qb-core/shared/items.lua
+# Place into qb-core/shared/items.lua
 ```
 ['grape'] 					 	 = {['name'] = 'grape', 						['label'] = 'Grape', 					['weight'] = 100, 		['type'] = 'item', 		['image'] = 'grape.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Mmmmh yummie, grapes',["created"] = nil,["decay"] = 28.0},
 ['wine'] 					 	 = {['name'] = 'wine', 							['label'] = 'Wine', 					['weight'] = 300, 		['type'] = 'item', 		['image'] = 'wine.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Some good wine to drink on a fine evening',["created"] = nil,["decay"] = 28.0},
@@ -25,11 +27,12 @@ Dependencies:
 ['grapejuice12'] 				 = {['name'] = 'grapejuice12', 					['label'] = 'Grape Juice 12PK', 		['weight'] = 3600, 		['type'] = 'item', 		['image'] = 'shipping-crate', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Long case of 12 bottles of grape juice',["created"] = nil,["decay"] = 28.0},
 ['grapejuice24'] 				 = {['name'] = 'grapejuice24', 					['label'] = 'Grape Juice 24PK', 		['weight'] = 7200, 		['type'] = 'item', 		['image'] = 'pallet-of-boxes.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Crate of 24 bottles of grape juice',["created"] = nil,["decay"] = 28.0},
 ```
+* Be sure to have the Images from the "Images" file placed into your proper Inventory Image File Location
 
-Note: If you aren't using T&J's Inventory System than you must remove ["created"]
-Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
+* Note: If you aren't using T&J's Inventory System than you must remove ["created"]
+* Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
 
--- Place into ms-peds/config.lua
+# Place into ms-peds/config.lua
 ```
 	-- Juice Picker Sales
 	
@@ -43,4 +46,3 @@ Note: If you aren't using either T&J's Inventory System or Joe's Decay System th
 Final Note:
 
 If you are to run into any issues regarding this Resource you may open a Ticket within Constant Development or ask for appropiate Support within the Discord!
-

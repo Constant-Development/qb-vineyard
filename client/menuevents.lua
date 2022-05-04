@@ -1,16 +1,26 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 RegisterNetEvent('qb-vineyard:client:ProcessMenu')
 AddEventHandler('qb-vineyard:client:ProcessMenu', function()
     local myMenu = {
         {
             id = 1,
-            header = 'Juices Sales'
+            header = 'Juice Mixings'
         },
         {
             id = 2,
-            header = "Mix Juices",
-            txt = "x16 Grapes = x1 GrapeJuice | x3 GrapeJuice = x1 Wine",
+            header = "Mix Grapes",
+            txt = "x16 Grapes = x1 GrapeJuice",
             params = {
-                event = "qb-vineyard:client:ProcessStage",
+                event = "qb-vineyard:client:GrapeJuiceProcessing",
+            }
+        },
+        {
+            id = 3,
+            header = "Mix GrapeJuice",
+            txt = "x3 GrapeJuice = x1 Wine",
+            params = {
+                event = "qb-vineyard:client:WineProcessing",
             }
         },
     }
@@ -29,7 +39,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
             header = "Pack GrapeJuice",
             txt = "x6 GrapeJuice = 6Pack | x12 GrapeJuice = 12Pack | x24 GrapeJuice = 24Pack",
             params = {
-                event = "qb-vineyard:client:PackagingStage",
+                event = "qb-vineyard:client:GrapeJuicePackaging",
             }
         },
         {
@@ -37,7 +47,7 @@ AddEventHandler('qb-vineyard:client:PackingMenu', function()
             header = "Pack Wine",
             txt = "x6 Wine = 6Pack | x12 = 12Pack | x24 Wine = 24Pack",
             params = {
-                event = "qb-vineyard:client:PackagingStage",
+                event = "qb-vineyard:client:WinePackaging",
             }
         },
     }
@@ -56,7 +66,7 @@ AddEventHandler('qb-vineyard:client:SellMenu', function()
             header = "Sell GrapeJuice",
             txt = "x6 Grape Juice = $4.00 | x12 Grape Juice = $15.00 | x24 Grape Juice = $32.00",
             params = {
-                event = "qb-vineyard:client:SellMenu",
+                event = "qb-vineyard:client:SellMenuFactors",
             }
         },
         {
@@ -64,7 +74,7 @@ AddEventHandler('qb-vineyard:client:SellMenu', function()
             header = "Sell Wine",
             txt = "x6 Wine = $35.00 | x12 Wine = $80.00 | x24 Wine = $180.00",
             params = {
-                event = "qb-vineyard:client:SellMenu",
+                event = "qb-vineyard:client:SellMenuFactors",
             }
         },
     }
