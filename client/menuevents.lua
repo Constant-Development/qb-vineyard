@@ -1,5 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 RegisterNetEvent('qb-vineyard:client:ProcessMenu')
 AddEventHandler('qb-vineyard:client:ProcessMenu', function()
     local myMenu = {

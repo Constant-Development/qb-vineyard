@@ -25,8 +25,8 @@ Citizen.CreateThread(function()
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-vineyard:client:ProcessMenu",
+                type = "client",
+                event = "qb-vineyard:client:ProcessMenu",
 				icon = "fas fa-wine-bottle",
 				label = "Squeeze Some Juices?!",
 			},
@@ -40,8 +40,8 @@ Citizen.CreateThread(function()
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-vineyard:client:PackingMenu",
+                type = "client",
+                event = "qb-vineyard:client:PackingMenu",
 				icon = "fa fa-box",
 				label = "Pack Some Drinks?!",
 			},
@@ -57,8 +57,8 @@ Citizen.CreateThread(function()
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-vineyard:client:SellMenu",
+                type = "client",
+                event = "qb-vineyard:client:SellMenu",
 				icon = "fa fa-dollar-sign",
 				label = "Sell Juices",
 			},
@@ -69,7 +69,7 @@ end)
 
 Citizen.CreateThread(function()
     if Config.Blip then
-	    VineyardBlip = AddBlipForCoord(-1874.8431, 2086.2163, 141.8856)
+	    local VineyardBlip = AddBlipForCoord(-1874.8431, 2086.2163, 141.8856)
         SetBlipSprite(VineyardBlip, Config.EnabledBlip.BlipSprite)
 	    SetBlipDisplay(VineyardBlip, Config.EnabledBlip.BlipDisplay)
         SetBlipScale(VineyardBlip, Config.EnabledBlip.BlipScale)
@@ -198,7 +198,7 @@ end)
 local function DeliveryTargetZone(route)
     Citizen.CreateThread(function()
         exports['qb-target']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
-        name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, }, 
+            name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, },
         { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
     end)
 end
