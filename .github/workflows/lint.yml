@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   lint:
     name: Lint Resource
-    runs-on: ubunt-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
