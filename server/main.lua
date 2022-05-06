@@ -96,7 +96,7 @@ RegisterNetEvent('qb-vineyard:server:WinePackaging', function()
         end
     else
         TriggerClientEvent('QBCore:Notify', src, "You don\'t have the correct Items!", 'error')
-    end 
+    end
 end)
 
 RegisterNetEvent('qb-vineyard:server:SellMenu', function()

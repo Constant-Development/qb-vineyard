@@ -198,7 +198,7 @@ end)
 local function DeliveryTargetZone(route)
     Citizen.CreateThread(function()
         exports['qb-target']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
-            name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, }, 
+            name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, },
         { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
     end)
 end
