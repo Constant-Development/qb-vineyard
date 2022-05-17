@@ -1,5 +1,7 @@
 Config = {}
 
+Config.GrapePickingCooldownTime = 10 -- Time Is In Minutes
+
 Config.Blip = true
  -- True = Blips Enabled
   -- Blip = Config.EnabledBlip

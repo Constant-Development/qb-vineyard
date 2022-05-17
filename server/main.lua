@@ -190,7 +190,7 @@ end)
 RegisterNetEvent('qb-vineyard:server:SetGrapePickingCooldown')
 AddEventHandler('qb-vineyard:server:SetGrapePickingCooldown', function()
     isGrapePickingCoolDownActive = true
-    Wait((Config.GumballStandCooldownTime * 1000) * 60)
+    Wait((Config.GrapePickingCooldownTime * 1000) * 60)
     isGrapePickingCoolDownActive = false
 end)
 
