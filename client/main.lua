@@ -130,7 +130,6 @@ function pickProcess()
                 if luck >= 8 then
                     TriggerServerEvent('cr-storeextras:server:SetGrapePickingCooldown')
                 end
-                end
             end, function() -- Cancel
                 Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
                 ClearPedTasks(PlayerPedId())
