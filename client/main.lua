@@ -128,7 +128,7 @@ function pickProcess()
                 ClearPedTasks(PlayerPedId())
 		        TriggerServerEvent("qb-vineyard:server:getGrapes")
                 if luck >= 8 then
-                    TriggerServerEvent('cr-storeextras:server:SetGrapePickingCooldown')
+                    TriggerServerEvent('qb-vineyard:server:SetGrapePickingCooldown')
                 end
             end, function() -- Cancel
                 Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
