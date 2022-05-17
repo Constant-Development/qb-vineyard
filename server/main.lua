@@ -1,5 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+isGrapePickingCoolDownActive = false
+
 RegisterNetEvent('qb-vineyard:server:getGrapes', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -183,4 +185,19 @@ QBCore.Functions.CreateUseableItem('grapejuice6', function()
 	local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.RemoveItem('grapejuice6')
     Player.Functions.AddItem('grapejuice', 6)
+end)
+
+RegisterNetEvent('qb-vineyard:server:SetGrapePickingCooldown')
+AddEventHandler('qb-vineyard:server:SetGrapePickingCooldown', function()
+    isGrapePickingCoolDownActive = true
+    Wait((Config.GumballStandCooldownTime * 1000) * 60)
+    isGrapePickingCoolDownActive = false
+end)
+
+QBCore.Functions.CreateCallback("qb-vineyard:server:GrapePickingCooldown",function(_, cb)
+    if isGrapePickingCoolDownActive then
+        cb(true)
+    else
+        cb(false)
+    end
 end)
