@@ -112,21 +112,31 @@ local function Notify(notifType, message, title)
 end
 
 function pickProcess()
-    QBCore.Functions.Progressbar("pick_grape", "Picking Grapes ..", math.random(6000,8000), false, true, {
-        disableMovement = true,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    }, {
-        animDict = "amb@prop_human_bum_bin@idle_a",
-        anim = "idle_a",
-        flags = 6,
-    }, {}, {}, function() -- Done
-        ClearPedTasks(PlayerPedId())
-		TriggerServerEvent("qb-vineyard:server:getGrapes")
-    end, function() -- Cancel
-        Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
-        ClearPedTasks(PlayerPedId())
+    local luck = math.random(1, 10)
+    QBCore.Functions.TriggerCallback('qb-vineyard:server:GrapePickingCooldown', function(result)
+        if not result then
+            QBCore.Functions.Progressbar("pick_grape", "Picking Grapes ..", math.random(6000,8000), false, true, {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {
+                animDict = "amb@prop_human_bum_bin@idle_a",
+                anim = "idle_a",
+                flags = 6,
+            }, {}, {}, function() -- Done
+                ClearPedTasks(PlayerPedId())
+		        TriggerServerEvent("qb-vineyard:server:getGrapes")
+                if luck >= 8 then
+                    TriggerServerEvent('qb-vineyard:server:SetGrapePickingCooldown')
+                end
+            end, function() -- Cancel
+                Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
+                ClearPedTasks(PlayerPedId())
+            end)
+        else
+            Notify(3, Config.Notifications["Cooldown"], Config.Notifications["okok_VineyardTitle"])
+        end
     end)
 end
 
