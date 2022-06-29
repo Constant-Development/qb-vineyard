@@ -15,6 +15,10 @@ the Resource to intricate different Locations and Systems relating to their cust
 - [qb-target](https://github.com/Renewed-Scripts/qb-target)
 - [ms-peds](https://github.com/MiddleSkillz/ms-peds)
 
+## Installation
+
+* If you encounter any issues whilst Installing or Using/Enforcing this Resource, please feel free to Open a Ticket within the [Constant Development Discord](https://discord.gg/gSQbshCNv4).
+
 # Place into qb-core/shared/items.lua
 ```
 ['grape'] 					 	 = {['name'] = 'grape', 						['label'] = 'Grape', 					['weight'] = 100, 		['type'] = 'item', 		['image'] = 'grape.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Mmmmh yummie, grapes',["created"] = nil,["decay"] = 28.0},
@@ -42,7 +46,3 @@ the Resource to intricate different Locations and Systems relating to their cust
 		gender = 'male',
 	},
 ```
-
-Final Note:
-
-If you are to run into any issues regarding this Resource you may open a Ticket within Constant Development or ask for appropiate Support within the Discord!

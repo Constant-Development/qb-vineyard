@@ -3,10 +3,11 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local Blip
 
 Citizen.CreateThread(function()
+
     exports['qb-target']:AddBoxZone("GrapePicking", vector3(-1885.91, 2120.11, 135.97), 35.4, 52.8, {
-	name = "GrapePicking",
-	heading = 352,
-	debugPoly = false,
+        name = "GrapePicking",
+        heading = 352,
+        debugPoly = false,
 	}, {
 		options = {
 			{
@@ -18,10 +19,11 @@ Citizen.CreateThread(function()
 		},
 		distance = 1
     })
+
     exports['qb-target']:AddBoxZone("JuicePickerProcess", vector3(-1874.69, 2069.18, 141.0), 2.0, 2.0, {
-	name = "JuicePickerProcess",
-	heading = 340,
-	debugPoly = false,
+        name = "JuicePickerProcess",
+        heading = 340,
+        debugPoly = false,
 	}, {
 		options = {
 			{
@@ -33,10 +35,11 @@ Citizen.CreateThread(function()
 		},
 		distance = 2
     })
+
     exports['qb-target']:AddBoxZone("JuicePickerPackaging", vector3(-1886.19, 2073.48, 141.0), 2.0, 2.0, {
-	name = "JuicePickerPackaging",
-	heading = 340,
-	debugPoly = false,
+        name = "JuicePickerPackaging",
+        heading = 340,
+        debugPoly = false,
 	}, {
 		options = {
 			{
@@ -48,15 +51,16 @@ Citizen.CreateThread(function()
 		},
 		distance = 2
     })
+
     exports['qb-target']:AddBoxZone("JuicePickerSell", vector3(-1888.09, 2050.43, 140.98), 0.8, 0.8, {
-	name = "JuicePickerSell",
-	heading = 0,
-	debugPoly = false,
-	minZ = 139.98,
-	maxZ = 141.78,
-	}, {
-		options = {
-			{
+        name = "JuicePickerSell",
+        heading = 0,
+        debugPoly = false,
+        minZ = 139.98,
+        maxZ = 141.78,
+    }, {
+        options = {
+            {
                 type = "client",
                 event = "qb-vineyard:client:SellMenu",
 				icon = "fa fa-dollar-sign",
@@ -65,15 +69,16 @@ Citizen.CreateThread(function()
 		},
 		distance = 3
     })
+
 end)
 
 Citizen.CreateThread(function()
     if Config.Blip then
-	    local VineyardBlip = AddBlipForCoord(-1874.8431, 2086.2163, 141.8856)
+        local VineyardBlip = AddBlipForCoord(-1874.8431, 2086.2163, 141.8856)
         SetBlipSprite(VineyardBlip, Config.EnabledBlip.BlipSprite)
-	    SetBlipDisplay(VineyardBlip, Config.EnabledBlip.BlipDisplay)
+        SetBlipDisplay(VineyardBlip, Config.EnabledBlip.BlipDisplay)
         SetBlipScale(VineyardBlip, Config.EnabledBlip.BlipScale)
-	    SetBlipColour(VineyardBlip, Config.EnabledBlip.BlipColour)
+        SetBlipColour(VineyardBlip, Config.EnabledBlip.BlipColour)
         SetBlipAsShortRange(VineyardBlip, true)
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentString(Config.EnabledBlip.BlipName)
@@ -111,7 +116,7 @@ local function Notify(notifType, message, title)
 	end
 end
 
-function pickProcess()
+local function pickProcess()
     local luck = math.random(1, 10)
     QBCore.Functions.TriggerCallback('qb-vineyard:server:GrapePickingCooldown', function(result)
         if not result then
@@ -126,7 +131,7 @@ function pickProcess()
                 flags = 6,
             }, {}, {}, function() -- Done
                 ClearPedTasks(PlayerPedId())
-		        TriggerServerEvent("qb-vineyard:server:getGrapes")
+                TriggerServerEvent("qb-vineyard:server:getGrapes")
                 if luck >= 8 then
                     TriggerServerEvent('qb-vineyard:server:SetGrapePickingCooldown')
                 end
@@ -140,7 +145,7 @@ function pickProcess()
     end)
 end
 
-function grapeJuiceProcess()
+local function grapeJuiceProcess()
     QBCore.Functions.Progressbar("process_grapes", "Processing Grapes ..", math.random(15000,20000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
@@ -159,7 +164,7 @@ function grapeJuiceProcess()
     end)
 end
 
-function WineProcess()
+local function WineProcess()
     QBCore.Functions.Progressbar("stirr_wine", "Stirring Wine..", math.random(15000,20000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
@@ -181,7 +186,7 @@ end
 RegisterNetEvent('qb-vineyard:pickgrapes')
 AddEventHandler('qb-vineyard:pickgrapes', function()
     pickProcess()
-	Wait(5000)
+	Citizen.Wait(5000)
     Notify(2, Config.Notifications["PickGrapesNextStepMessage"], Config.Notifications["okok_VineyardTitle"])
 end)
 
@@ -244,12 +249,12 @@ AddEventHandler('qb-vineyard:client:SellMenuEvent', function()
         animDict = "timetable@jimmy@doorknock@",
         anim = "knockdoor_idle",
         flags = 17,
-    }, {}, {}, function() -- Done
+    }, {}, {}, function()
         ClearPedTasks(PlayerPedId())
         TriggerServerEvent("qb-vineyard:server:SellMenu")
         RemoveBlip(Blip)
         exports['qb-target']:RemoveZone("VineyardSellMenu")
-    end, function() -- Cancel
+    end, function()
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
         ClearPedTasks(PlayerPedId())
     end)

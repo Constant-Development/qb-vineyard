@@ -3,12 +3,12 @@ Config = {}
 Config.GrapePickingCooldownTime = 10 -- Time Is In Minutes
 
 Config.Blip = true
- -- True = Blips Enabled
-  -- Blip = Config.EnabledBlip
- -- False = Blips Disabled
+    -- True = Blips Enabled
+        -- Blip = Config.EnabledBlip
+    -- False = Blips Disabled
 Config.DebugPoly = true
- -- True = Poly's Enabled
- -- False = Poly's Disabled
+    -- True = Poly's Enabled
+    -- False = Poly's Disabled
 
 Config.EnabledBlip = {
     BlipSprite = 615,
