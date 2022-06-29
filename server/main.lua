@@ -2,12 +2,16 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 isGrapePickingCoolDownActive = false
 
+-- Grape Giving via Picking
+
 RegisterNetEvent('qb-vineyard:server:getGrapes', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.AddItem("grape", math.random(3,11))
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['grape'], "add")
 end)
+
+-- Portion Events
 
 RegisterNetEvent('qb-vineyard:server:PortionGrapes', function()
     local src = source
@@ -44,6 +48,8 @@ RegisterNetEvent('qb-vineyard:server:PortionGrapeJuice', function()
         TriggerClientEvent('QBCore:Notify', src, "You do not have the correct items!", 'error')
     end
 end)
+
+-- Direct Packaging Events
 
 RegisterNetEvent('qb-vineyard:server:GrapeJuicePackaging', function()
     local src = source
@@ -101,6 +107,8 @@ RegisterNetEvent('qb-vineyard:server:WinePackaging', function()
     end
 end)
 
+-- Direct Selling Event
+
 RegisterNetEvent('qb-vineyard:server:SellMenu', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -145,26 +153,7 @@ RegisterNetEvent('qb-vineyard:server:SellMenu', function()
     end
 end)
 
-QBCore.Functions.CreateUseableItem('wine24', function()
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.RemoveItem('wine24')
-    Player.Functions.AddItem('wine', 24)
-end)
-
-QBCore.Functions.CreateUseableItem('wine12', function()
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.RemoveItem('wine12')
-    Player.Functions.AddItem('wine', 12)
-end)
-
-QBCore.Functions.CreateUseableItem('wine6', function()
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.RemoveItem('wine6')
-    Player.Functions.AddItem('wine', 6)
-end)
+-- Items Basis
 
 QBCore.Functions.CreateUseableItem('grapejuice24', function()
     local src = source
@@ -186,6 +175,29 @@ QBCore.Functions.CreateUseableItem('grapejuice6', function()
     Player.Functions.RemoveItem('grapejuice6')
     Player.Functions.AddItem('grapejuice', 6)
 end)
+
+QBCore.Functions.CreateUseableItem('wine24', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem('wine24')
+    Player.Functions.AddItem('wine', 24)
+end)
+
+QBCore.Functions.CreateUseableItem('wine12', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem('wine12')
+    Player.Functions.AddItem('wine', 12)
+end)
+
+QBCore.Functions.CreateUseableItem('wine6', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem('wine6')
+    Player.Functions.AddItem('wine', 6)
+end)
+
+-- Cooldown Basis
 
 RegisterNetEvent('qb-vineyard:server:SetGrapePickingCooldown')
 AddEventHandler('qb-vineyard:server:SetGrapePickingCooldown', function()
