@@ -3,6 +3,8 @@ QBCore Vineyard Job Rework
 
 Constant Development Discord: https://discord.gg/gSQbshCNv4
 
+Constant Development Tebex: https://constant-development.tebex.io/
+
 Constant RolePlay Discord: https://discord.gg/constantroleplay
 
 Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. 
