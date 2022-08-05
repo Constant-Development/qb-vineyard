@@ -1,11 +1,10 @@
 # qb-vineyard
-QBCore Vineyard Job Rework
 
-Constant Development Discord: https://discord.gg/gSQbshCNv4
+## QBCore Vineyard Job Rework
 
-Constant Development Tebex: https://constant-development.tebex.io/
-
-Constant RolePlay Discord: https://discord.gg/constantroleplay
+[Constant Development Discord](https://discord.gg/gSQbshCNv4)
+[Constant Development Tebex](https://constant-development.tebex.io/)
+[Constant RolePlay Discord](https://discord.gg/constantroleplay)
 
 Within this Resource, you will be allowed to Pick, Process, Pack, and Sell GrapJuice and Wine. 
 With this in mind, you can further use the packed Wine/GrapeJuice for immersive RolePlay between 
@@ -13,9 +12,12 @@ a Mafia/Cartel and Business. Furthermore, it allows there to be an immersive set
 from those who wish to Own the VineYard Mansion. Another note, this also allows for those who manage
 the Resource to intricate different Locations and Systems relating to their custom Communities/Server's.
 
-## Dependencies:
+## Dependencies
+- [qb-menu](https://github.com/qbcore-framework/qb-menu)
+
+## Optional Dependencies:
 - [qb-target](https://github.com/Renewed-Scripts/qb-target)
-- [ms-peds](https://github.com/MiddleSkillz/ms-peds)
+- [qtarget](https://github.com/overextended/qtarget)
 
 ## Installation
 
@@ -37,14 +39,3 @@ the Resource to intricate different Locations and Systems relating to their cust
 
 * Note: If you aren't using T&J's Inventory System than you must remove ["created"]
 * Note: If you aren't using either T&J's Inventory System or Joe's Decay System than you must remove ["decay"]
-
-# Place into ms-peds/config.lua
-```
-	-- Juice Picker Sales
-	
-	{
-		model = `cs_russiandrunk`,
-		coords = vector4(-1888.0942, 2050.4277, 140.9838, 156.2016),
-		gender = 'male',
-	},
-```

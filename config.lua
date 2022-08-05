@@ -2,28 +2,22 @@ Config = {}
 
 Config.GrapePickingCooldownTime = 10 -- Time Is In Minutes
 
+Config.Target = 'qb-target'
+ -- 'qb-target' = QBCore Target
+ -- 'qtarget' = QTarget by Overextended
+Config.DebugPoly = true
+    -- True = Poly's Enabled
+    -- False = Poly's Disabled
 Config.Blip = true
     -- True = Blips Enabled
         -- Blip = Config.EnabledBlip
     -- False = Blips Disabled
-Config.DebugPoly = true
-    -- True = Poly's Enabled
-    -- False = Poly's Disabled
-
 Config.EnabledBlip = {
     BlipSprite = 615,
     BlipDisplay = 4,
     BlipScale = 0.6,
     BlipColour = 58,
     BlipName = "Vineyard",
-}
-
-Config.RoutesBlipConfig = {
-    BlipSprite = 274,
-    BlipDisplay = 3,
-    BlipScale = 0.6,
-    BlipColour = 59,
-    BlipName = "Dealer Destination",
 }
 
 Config.Routes = {
@@ -47,6 +41,14 @@ Config.Routes = {
         DeliveryCoords = vector3(63.8172, -1729.1006, 29.6441),
         Heading = 49.4062
     },
+}
+
+Config.RoutesBlipConfig = {
+    BlipSprite = 274,
+    BlipDisplay = 3,
+    BlipScale = 0.6,
+    BlipColour = 59,
+    BlipName = "Dealer Destination",
 }
 
 Config.Notifications = {

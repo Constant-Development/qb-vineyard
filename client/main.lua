@@ -4,71 +4,143 @@ local Blip
 
 Citizen.CreateThread(function()
 
-    exports['qb-target']:AddBoxZone("GrapePicking", vector3(-1885.91, 2120.11, 135.97), 35.4, 52.8, {
-        name = "GrapePicking",
-        heading = 352,
-        debugPoly = false,
-	}, {
-		options = {
-			{
-                type = "client",
-                event = "qb-vineyard:pickgrapes",
-                icon = "fas fa-hand",
-                label = "Start Picking Grapes!",
-			},
-		},
-		distance = 1
-    })
+    if Config.Target == 'qb-target' then
 
-    exports['qb-target']:AddBoxZone("JuicePickerProcess", vector3(-1874.69, 2069.18, 141.0), 2.0, 2.0, {
-        name = "JuicePickerProcess",
-        heading = 340,
-        debugPoly = false,
-	}, {
-		options = {
-			{
-                type = "client",
-                event = "qb-vineyard:client:ProcessMenu",
-				icon = "fas fa-wine-bottle",
-				label = "Squeeze Some Juices?!",
-			},
-		},
-		distance = 2
-    })
+        exports['qb-target']:AddBoxZone("GrapePicking", vector3(-1885.91, 2120.11, 135.97), 35.4, 52.8, {
+            name = "GrapePicking",
+            heading = 352,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:pickgrapes",
+                    icon = "fas fa-hand",
+                    label = "Start Picking Grapes!",
+			    },
+		    },
+		    distance = 1
+        })
 
-    exports['qb-target']:AddBoxZone("JuicePickerPackaging", vector3(-1886.19, 2073.48, 141.0), 2.0, 2.0, {
-        name = "JuicePickerPackaging",
-        heading = 340,
-        debugPoly = false,
-	}, {
-		options = {
-			{
-                type = "client",
-                event = "qb-vineyard:client:PackingMenu",
-				icon = "fa fa-box",
-				label = "Pack Some Drinks?!",
-			},
-		},
-		distance = 2
-    })
+        exports['qb-target']:AddBoxZone("JuicePickerProcess", vector3(-1874.69, 2069.18, 141.0), 2.0, 2.0, {
+            name = "JuicePickerProcess",
+            heading = 340,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:client:ProcessMenu",
+				    icon = "fas fa-wine-bottle",
+				    label = "Squeeze Some Juices?!",
+			    },
+		    },
+		    distance = 2
+        })
 
-    exports['qb-target']:AddBoxZone("JuicePickerSell", vector3(-1888.09, 2050.43, 140.98), 0.8, 0.8, {
-        name = "JuicePickerSell",
-        heading = 0,
-        debugPoly = false,
-        minZ = 139.98,
-        maxZ = 141.78,
-    }, {
-        options = {
-            {
-                type = "client",
-                event = "qb-vineyard:client:SellMenu",
-				icon = "fa fa-dollar-sign",
-				label = "Sell Juices",
-			},
-		},
-		distance = 3
-    })
+        exports['qb-target']:AddBoxZone("JuicePickerPackaging", vector3(-1886.19, 2073.48, 141.0), 2.0, 2.0, {
+            name = "JuicePickerPackaging",
+            heading = 340,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:client:PackingMenu",
+				    icon = "fa fa-box",
+				    label = "Pack Some Drinks?!",
+			    },
+		    },
+		    distance = 2
+        })
+
+        exports['qb-target']:AddBoxZone("JuicePickerSell", vector3(-1888.09, 2050.43, 140.98), 0.8, 0.8, {
+            name = "JuicePickerSell",
+            heading = 0,
+            debugPoly = Config.DebugPoly,
+            minZ = 139.98,
+            maxZ = 141.78,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-vineyard:client:SellMenu",
+				    icon = "fa fa-dollar-sign",
+				    label = "Sell Juices",
+			    },
+		    },
+		    distance = 3
+        })
+
+    elseif Config.Target == 'qtarget' then
+
+        exports['qtarget']:AddBoxZone("GrapePicking", vector3(-1885.91, 2120.11, 135.97), 35.4, 52.8, {
+            name = "GrapePicking",
+            heading = 352,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:pickgrapes",
+                    icon = "fas fa-hand",
+                    label = "Start Picking Grapes!",
+			    },
+		    },
+		    distance = 1
+        })
+
+        exports['qtarget']:AddBoxZone("JuicePickerProcess", vector3(-1874.69, 2069.18, 141.0), 2.0, 2.0, {
+            name = "JuicePickerProcess",
+            heading = 340,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:client:ProcessMenu",
+				    icon = "fas fa-wine-bottle",
+				    label = "Squeeze Some Juices?!",
+			    },
+		    },
+		    distance = 2
+        })
+
+        exports['qtarget']:AddBoxZone("JuicePickerPackaging", vector3(-1886.19, 2073.48, 141.0), 2.0, 2.0, {
+            name = "JuicePickerPackaging",
+            heading = 340,
+            debugPoly = Config.DebugPoly,
+	    }, {
+		    options = {
+			    {
+                    type = "client",
+                    event = "qb-vineyard:client:PackingMenu",
+				    icon = "fa fa-box",
+				    label = "Pack Some Drinks?!",
+			    },
+		    },
+		    distance = 2
+        })
+
+        exports['qtarget']:AddBoxZone("JuicePickerSell", vector3(-1888.09, 2050.43, 140.98), 0.8, 0.8, {
+            name = "JuicePickerSell",
+            heading = 0,
+            debugPoly = Config.DebugPoly,
+            minZ = 139.98,
+            maxZ = 141.78,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-vineyard:client:SellMenu",
+				    icon = "fa fa-dollar-sign",
+				    label = "Sell Juices",
+			    },
+		    },
+		    distance = 3
+        })
+
+    end
 
 end)
 
@@ -84,6 +156,29 @@ Citizen.CreateThread(function()
         AddTextComponentString(Config.EnabledBlip.BlipName)
         EndTextCommandSetBlipName(VineyardBlip)
     end
+end)
+
+local function EnsurePedModel(pedModel)
+    RequestModel(pedModel)
+    while not HasModelLoaded(pedModel) do
+        Wait(10)
+    end
+end
+
+local function CreatePedAtCoords(pedModel, coords)
+    pedModel = type(pedModel) == "string" or pedModel
+    EnsurePedModel(pedModel)
+    local ped = CreatePed(0, pedModel, coords.x, coords.y, coords.z - 0.98, coords.w, false, false)
+    FreezeEntityPosition(ped, true)
+    SetEntityVisible(ped, true)
+    SetEntityInvincible(ped, true)
+    PlaceObjectOnGroundProperly(ped)
+    SetBlockingOfNonTemporaryEvents(ped, true)
+    return ped
+end
+
+Citizen.CreateThread(function()
+	CreatePedAtCoords('cs_russiandrunk', vector4(-1888.0942, 2050.4277, 140.9838, 156.2016))
 end)
 
 local function Notify(notifType, message, title)
@@ -212,9 +307,15 @@ end)
 
 local function DeliveryTargetZone(route)
     Citizen.CreateThread(function()
-        exports['qb-target']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
-            name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, },
-        { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
+        if Config.Target == 'qb-target' then
+            exports['qb-target']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
+                name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, },
+            { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
+        elseif Config.Target == 'qtarget' then
+            exports['qtarget']:AddBoxZone("VineyardSellMenu", Config.Routes[route].DeliveryCoords, 2, 2, {
+                name = "VineyardSellMenu", heading = Config.Routes[route].heading, debugPoly = Config.DebugPoly, },
+            { options = { { type = "client", event = "qb-vineyard:client:SellMenuEvent", icon = "fa-solid fa-hand", label = "Deliver The Goods!", }, }, distance = 1.5 })
+        end
     end)
 end
 
@@ -253,7 +354,11 @@ AddEventHandler('qb-vineyard:client:SellMenuEvent', function()
         ClearPedTasks(PlayerPedId())
         TriggerServerEvent("qb-vineyard:server:SellMenu")
         RemoveBlip(Blip)
-        exports['qb-target']:RemoveZone("VineyardSellMenu")
+        if Config.Target == 'qb-target' then
+            exports['qb-target']:RemoveZone("VineyardSellMenu")
+        elseif Config.Target == 'qtarget' then
+            exports['qtarget']:RemoveZone("VineyardSellMenu")
+        end
     end, function()
         Notify(3, Config.Notifications["TaskCancel"], Config.Notifications["okok_VineyardTitle"])
         ClearPedTasks(PlayerPedId())
