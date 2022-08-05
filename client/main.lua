@@ -166,7 +166,9 @@ local function EnsurePedModel(pedModel)
 end
 
 local function CreatePedAtCoords(pedModel, coords)
-    pedModel = type(pedModel) == "string" or pedModel
+    if type(pedModel) == "string" then
+        pedModel = GetHashKey(pedModel)
+    end
     EnsurePedModel(pedModel)
     local ped = CreatePed(0, pedModel, coords.x, coords.y, coords.z - 0.98, coords.w, false, false)
     FreezeEntityPosition(ped, true)
