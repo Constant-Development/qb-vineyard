@@ -2,10 +2,15 @@ Config = {}
 
 Config.GrapePickingCooldownTime = 10 -- Time Is In Minutes
 
+Config.Notify = 'qb'
+ -- 'qb' = QBCore Notifications
+ -- 'okok' = OkOk Notifications
+ -- 'mythic' = Mythic Notifications
+ -- 'chat' = Chat Notifications
 Config.Target = 'qb-target'
  -- 'qb-target' = QBCore Target
  -- 'qtarget' = QTarget by Overextended
-Config.DebugPoly = true
+Config.DebugPoly = false
     -- True = Poly's Enabled
     -- False = Poly's Disabled
 Config.Blip = true
@@ -55,7 +60,7 @@ Config.Notifications = {
     --Messages
     ["TaskCancel"] = "You have cancelled the task...",
     ["PickGrapesNextStepMessage"] = "Begin heading to the back two Doors of the Mansion...",
-
+    ["Cooldown"] = "Your hands hurt, take some time to rest.",
     --OkOk Titles
     ["okok_VineyardTitle"] = "Juice System Aid",
 }
